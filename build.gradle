@@ -170,7 +170,7 @@ def getGitChangelog = { ->
 
 curseforge {
 
-    apiKey = System.getenv('curseForgeApiKey') ? System.getenv('curseForgeApiKey') : '0';
+    apiKey = System.getenv('authCure') ? System.getenv('authCure') : '0';
 
     project {
 
