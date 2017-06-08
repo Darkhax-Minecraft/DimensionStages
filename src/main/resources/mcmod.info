@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dimstages",
+  "name": "Dimension Stages",
+  "description": "Restricts access to dimensions based on stages",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Darkhax"],
+  "credits": "Darkosto for the idea!",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
