@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class DimensionStages {
 
     public static final Map<Integer, String> DIMENSION_MAP = new HashMap<>();
+    public static final int MESSAGE_ID = 95505255;
 
     @Mod.EventHandler
     public void preInit (FMLPreInitializationEvent event) {
@@ -59,7 +60,7 @@ public class DimensionStages {
                 final EntityItem item = (EntityItem) event.getEntity();
 
                 if (item.getThrower() != null && !item.getThrower().isEmpty()) {
-                    
+
                     attemptEntryBlock(event.getEntity().getEntityWorld().getPlayerEntityByName(item.getThrower()), requiredStage, event);
                 }
             }
