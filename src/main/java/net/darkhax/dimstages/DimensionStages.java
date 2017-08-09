@@ -3,8 +3,6 @@ package net.darkhax.dimstages;
 import java.util.HashMap;
 import java.util.Map;
 
-import crafttweaker.CraftTweakerAPI;
-import net.darkhax.dimstages.compat.crt.DimensionStagesCrT;
 import net.darkhax.gamestages.capabilities.PlayerDataHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -14,7 +12,6 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

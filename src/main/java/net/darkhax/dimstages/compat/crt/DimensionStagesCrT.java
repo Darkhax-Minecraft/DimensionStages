@@ -12,6 +12,6 @@ public class DimensionStagesCrT {
     @ZenMethod
     public static void addDimensionStage (String stage, int id) {
 
-       CraftTweakerAPI.apply(new ActionAddDimensionRestriction(stage, id));
+        CraftTweakerAPI.apply(new ActionAddDimensionRestriction(stage, id));
     }
 }
