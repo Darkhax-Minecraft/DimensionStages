@@ -1,9 +1,9 @@
 package net.darkhax.dimstages.compat.crt;
 
-import minetweaker.IUndoableAction;
+import crafttweaker.IAction;
 import net.darkhax.dimstages.DimensionStages;
 
-public class ActionAddDimensionRestriction implements IUndoableAction {
+public class ActionAddDimensionRestriction implements IAction {
 
     private final String stage;
     private final int dimensionId;
@@ -24,29 +24,5 @@ public class ActionAddDimensionRestriction implements IUndoableAction {
     public String describe () {
 
         return String.format("Dimesnion %d has been added to stage %s", this.dimensionId, this.stage);
-    }
-
-    @Override
-    public void undo () {
-
-        DimensionStages.DIMENSION_MAP.remove(this.dimensionId);
-    }
-
-    @Override
-    public String describeUndo () {
-
-        return String.format("Removed dimension %d from stage %s", this.dimensionId, this.stage);
-    }
-
-    @Override
-    public boolean canUndo () {
-
-        return true;
-    }
-
-    @Override
-    public Object getOverrideKey () {
-
-        return null;
     }
 }

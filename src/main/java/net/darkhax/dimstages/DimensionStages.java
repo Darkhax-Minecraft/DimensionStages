@@ -3,7 +3,7 @@ package net.darkhax.dimstages;
 import java.util.HashMap;
 import java.util.Map;
 
-import minetweaker.MineTweakerAPI;
+import crafttweaker.CraftTweakerAPI;
 import net.darkhax.dimstages.compat.crt.DimensionStagesCrT;
 import net.darkhax.gamestages.capabilities.PlayerDataHandler;
 import net.minecraft.entity.Entity;
@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = "dimstages", name = "Dimension Stages", version = "@VERSION@", dependencies = "required-after:bookshelf@[2.0.0.384,);required-after:gamestages@[1.0.8,);required-after:crafttweaker@[3.0.25.,)")
+@Mod(modid = "dimstages", name = "Dimension Stages", version = "@VERSION@", dependencies = "required-after:bookshelf@[2.0.0.415,);required-after:gamestages@[1.0.12,);required-after:crafttweaker@[4.0.0.,)")
 public class DimensionStages {
 
     public static final Map<Integer, String> DIMENSION_MAP = new HashMap<>();
@@ -29,12 +29,6 @@ public class DimensionStages {
     public void preInit (FMLPreInitializationEvent event) {
 
         MinecraftForge.EVENT_BUS.register(this);
-    }
-
-    @Mod.EventHandler
-    public void init (FMLInitializationEvent event) {
-
-        MineTweakerAPI.registerClass(DimensionStagesCrT.class);
     }
 
     @SubscribeEvent
