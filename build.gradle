@@ -180,7 +180,7 @@ curseforge {
         changelogType = 'markdown'
 
         addGameVersion "${version_minecraft}"
-        addGameVersion `1.12`
+        addGameVersion '1.12'
         
         mainArtifact(jar) {
           
