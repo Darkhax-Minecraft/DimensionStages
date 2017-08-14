@@ -83,8 +83,8 @@ repositories {
 
 dependencies {
 
-    deobfCompile "net.darkhax.bookshelf:Bookshelf:${version_minecraft}-${version_bookshelf}"
-    deobfCompile "net.darkhax.gamestages:GameStages-${version_minecraft}:${version_gamestages}"
+    deobfCompile "net.darkhax.bookshelf:Bookshelf:${version_bookshelf}"
+    deobfCompile "net.darkhax.gamestages:GameStages-1.12:${version_gamestages}"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-${version_minetweaker}"
 }
 
@@ -180,6 +180,7 @@ curseforge {
         changelogType = 'markdown'
 
         addGameVersion "${version_minecraft}"
+        addGameVersion `1.12`
         
         mainArtifact(jar) {
           
