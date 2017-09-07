@@ -23,6 +23,6 @@ public class ActionAddDimensionRestriction implements IAction {
     @Override
     public String describe () {
 
-        return String.format("Dimesnion %d has been added to stage %s", this.dimensionId, this.stage);
+        return String.format("Dimension %d has been added to stage %s", this.dimensionId, this.stage);
     }
 }
