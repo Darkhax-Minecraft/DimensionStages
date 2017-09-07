@@ -152,7 +152,6 @@ curseforge {
     }
 }
 
-
 task signJar(type: SignJar, dependsOn: reobfJar) {
 
     onlyIf {
