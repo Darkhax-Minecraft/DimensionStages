@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = "dimstages", name = "Dimension Stages", version = "@VERSION@", dependencies = "required-after:bookshelf@[2.1.427,);required-after:gamestages@[1.0.18,);required-after:crafttweaker@[4.0.0.,)", acceptedMinecraftVersions = "[1.12,1.12.2)", certificateFingerprint = "@FINGERPRINT@")
+@Mod(modid = "dimstages", name = "Dimension Stages", version = "@VERSION@", dependencies = "required-after:bookshelf@[2.1.443,);required-after:gamestages@[1.0.63,);required-after:crafttweaker@[4.0.0.,)", certificateFingerprint = "@FINGERPRINT@")
 public class DimensionStages {
 
     public static final Map<Integer, String> DIMENSION_MAP = new HashMap<>();
