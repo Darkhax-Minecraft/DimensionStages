@@ -1,0 +1,39 @@
+modLoader="javafml"
+loaderVersion="[36,]"
+issueTrackerURL="https://github.com/Darkhax-Minecraft/DimensionStages/issues"
+license="LGPL v2.1"
+logoBlur=false
+
+[[mods]]
+modId="dimstages"
+updateJSONURL="https://updates.blamejared.com/get?n=dimstages&gv=1.16.5"
+version="${version}"
+displayName="${modName}"
+displayURL="${modHomepage}"
+credits="${modCredits}"
+authors="${modAuthor}"
+description='''
+${modDescription}
+'''
+itemIcon="minecraft:obsidian"
+
+[[dependencies.dimstages]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36,]"
+    ordering="NONE"
+    side="SERVER"
+
+[[dependencies.dimstages]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5]"
+    ordering="NONE"
+    side="SERVER"
+    
+[[dependencies.dimstages]]
+    modId="gamestages"
+    mandatory=true
+    versionRange="[7,]"
+    ordering="NONE"
+    side="SERVER"

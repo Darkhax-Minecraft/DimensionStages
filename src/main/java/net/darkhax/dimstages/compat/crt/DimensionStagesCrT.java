@@ -1,17 +1,26 @@
 package net.darkhax.dimstages.compat.crt;
 
-import crafttweaker.CraftTweakerAPI;
-import crafttweaker.annotations.ZenRegister;
-import stanhebben.zenscript.annotations.ZenClass;
-import stanhebben.zenscript.annotations.ZenMethod;
+import org.openzen.zencode.java.ZenCodeType;
+
+import com.blamejared.crafttweaker.api.CraftTweakerAPI;
+import com.blamejared.crafttweaker.api.annotations.ZenRegister;
+import com.blamejared.crafttweaker.impl.util.text.MCTextComponent;
+
+import net.darkhax.dimstages.restriction.DimensionRestriction;
 
 @ZenRegister
-@ZenClass("mods.DimensionStages")
+@ZenCodeType.Name("mods.dimstages.DimensionStages")
 public class DimensionStagesCrT {
     
-    @ZenMethod
-    public static void addDimensionStage (String stage, int id) {
+    @ZenCodeType.Method
+    public static void stageDimension (String dimensionId, String... stages) {
         
-        CraftTweakerAPI.apply(new ActionAddDimensionRestriction(stage, id));
+        CraftTweakerAPI.apply(new ActionStageDimension(dimensionId, new MCTextComponent(DimensionRestriction.DEFAULT_MESSAGE), stages));
+    }
+    
+    @ZenCodeType.Method
+    public static void stageDimensionWithMessage (String dimensionId, MCTextComponent message, String... stages) {
+        
+        CraftTweakerAPI.apply(new ActionStageDimension(dimensionId, message, stages));
     }
 }
