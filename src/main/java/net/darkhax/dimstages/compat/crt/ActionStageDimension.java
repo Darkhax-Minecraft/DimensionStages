@@ -84,6 +84,6 @@ public class ActionStageDimension implements IRuntimeAction {
     @Override
     public String describe () {
         
-        return "[Dimension Staes] Staging dimension '" + this.dimensionId + "' to stage(s) '" + Arrays.toString(this.stages) + "'. " + this.getDeclaredScriptPosition();
+        return "[Dimension Stages] Staging dimension '" + this.dimensionId + "' to stage(s) '" + Arrays.toString(this.stages) + "'. " + this.getDeclaredScriptPosition();
     }
 }
