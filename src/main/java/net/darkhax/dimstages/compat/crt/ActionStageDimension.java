@@ -32,7 +32,7 @@ public class ActionStageDimension implements IRuntimeAction {
     @Override
     public boolean validate (ILogger logger) {
         
-        if (ResourceLocation.tryCreate(this.dimensionId) == null) {
+        if (ResourceLocation.tryParse(this.dimensionId) == null) {
             
             logger.error("[Dimension Stages] Invalid dimension ID '" + this.dimensionId + "'.");
             return false;
