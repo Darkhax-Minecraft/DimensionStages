@@ -1,12 +1,12 @@
 modLoader="javafml"
-loaderVersion="[36,]"
+loaderVersion="[43,]"
 issueTrackerURL="https://github.com/Darkhax-Minecraft/DimensionStages/issues"
 license="LGPL v2.1"
 logoBlur=false
 
 [[mods]]
 modId="dimstages"
-updateJSONURL="https://updates.blamejared.com/get?n=dimstages&gv=1.16.5"
+updateJSONURL="https://updates.blamejared.com/get?n=dimstages&gv=${minecraft_version}"
 version="${version}"
 displayName="${modName}"
 displayURL="${modHomepage}"
@@ -20,20 +20,20 @@ itemIcon="minecraft:obsidian"
 [[dependencies.dimstages]]
     modId="forge"
     mandatory=true
-    versionRange="[36,]"
+    versionRange="[43,]"
     ordering="NONE"
     side="SERVER"
 
 [[dependencies.dimstages]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5]"
+    versionRange="[1.19.2]"
     ordering="NONE"
     side="SERVER"
     
 [[dependencies.dimstages]]
     modId="gamestages"
     mandatory=true
-    versionRange="[7,]"
+    versionRange="[11,]"
     ordering="NONE"
     side="SERVER"
