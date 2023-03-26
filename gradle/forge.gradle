@@ -242,7 +242,7 @@ task runServer() {
 // Forge's Jar Signer
 def canSignJar = project.hasProperty('keyStore') && project.hasProperty('keyStorePass') && project.hasProperty('keyStoreKeyPass') && project.hasProperty('keyStoreAlias')
 
-/*task signJar(type: net.minecraftforge.gradle.common.task.SignJar, dependsOn: jar) {
+task signJar(type: net.minecraftforge.gradle.common.task.SignJar, dependsOn: jar) {
     
     onlyIf {
     
@@ -265,7 +265,7 @@ def canSignJar = project.hasProperty('keyStore') && project.hasProperty('keyStor
     
         project.logger.warn('Jar signing is disabled for this build. One or more keyStore properties are not specified.')
     }
-}*/
+}
 
 task setupDebugRunConfigs() {
 
