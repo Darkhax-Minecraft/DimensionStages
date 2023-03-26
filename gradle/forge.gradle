@@ -28,7 +28,6 @@ buildscript {
 
 apply plugin: net.minecraftforge.gradle.userdev.UserDevPlugin
 apply from: 'gradle/property_helper.gradle'
-apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle'
 
 // Configurable Forge Properties
 def forgeVersion = getRequiredString('forge_version')
@@ -237,34 +236,6 @@ task runServer() {
 
     description = 'Runs the game server in developer/debug mode.'
     dependsOn modName.replaceAll("\\s","") + 'Server'
-}
-
-// Forge's Jar Signer
-def canSignJar = project.hasProperty('keyStore') && project.hasProperty('keyStorePass') && project.hasProperty('keyStoreKeyPass') && project.hasProperty('keyStoreAlias')
-
-task signJar(type: net.minecraftforge.gradle.common.task.SignJar, dependsOn: jar) {
-    
-    onlyIf {
-    
-        canSignJar
-    }
-    
-    if (canSignJar) {
-    
-        keyStore = project.findProperty('keyStore')
-        alias = project.findProperty('keyStoreAlias')
-        storePass = project.findProperty('keyStorePass')
-        keyPass = project.findProperty('keyStoreKeyPass')
-        inputFile = jar.archivePath
-        outputFile = jar.archivePath
-        
-        build.dependsOn signJar
-    }
-    
-    else {
-    
-        project.logger.warn('Jar signing is disabled for this build. One or more keyStore properties are not specified.')
-    }
 }
 
 task setupDebugRunConfigs() {

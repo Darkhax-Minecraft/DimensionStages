@@ -1,35 +1,9 @@
 apply from: 'gradle/property_helper.gradle'
 
 repositories {
-
-    // This maven repository hosts files for hundreds of mods. Some notable 
-    // mods include Bookshelf, Botania, BotanyPots, CraftTweaker, DarkUtils,
-    // GameStages, Patchouli, Psi, and Quark.    
     maven {
 
         url 'https://maven.blamejared.com'
-    }
-    
-    // This maven repository hosts files for mods by TheIllusiveC4. This
-    // includes Curios, Caelus, and other APIs.
-    maven {
-
-        url = 'https://maven.theillusivec4.top/'
-    }
-    
-    // This maven repository proxies requests to the CurseForge API. This will
-    // allow mods without traditional mavens to be used in a dev environment.
-    // They use the pattern curse.maven:<descriptor>-<projectid>:<fileid> for 
-    // maven coordinates.
-    maven {
-    
-        url = 'https://www.cursemaven.com'
-        
-        // Improve performance by only querying for their specific group.
-        content {
-        
-            includeGroup 'curse.maven'
-        }
     }
 }
 
@@ -54,70 +28,6 @@ dependencies {
         // can use the API to check which flags a player has enabled. This mod
         // has a hard requirement on Bookshelf.        
         deobfCompile('gamestages', 'net.darkhax.gamestages', 'GameStages-Forge-'+project.ext.mcVersion, '11.+')
-    }
-
-    // This section includes mods that are commonly used by players and meet a
-    // minimum level of quality and performance. These mods are only available
-    // at runtime by default meaning you may not directly access their code.
-    if (getDefaultBoolean('dependencies_runtime_enabled')) {
-
-        // AttributeFix changes the min/max bounds of entity attributes to move
-        // them in line with how mods and players expect them to work. For
-        // example armor can not go above 30 and damage can not go above 1024
-        // in vanilla.
-        deobfRuntime('attributefix', 'net.darkhax.attributefix', 'AttributeFix-Forge-'+project.ext.mcVersion, '17.+')
-
-        // Dark Utilities adds a bunch of miscellaneous content to the game
-        // such as Vector Plates which push mobs around. This mod has a hard
-        // requirement on Bookshelf and Runelic.
-        deobfRuntime('darkutils', 'net.darkhax.darkutilities', 'DarkUtilities-Forge-'+project.ext.mcVersion, '13.+')
-
-        // Adds descriptions of enchantments to enchanted book tooltips.
-        deobfRuntime('enchdesc', 'net.darkhax.enchdesc', 'EnchantmentDescriptions-Forge-'+project.ext.mcVersion, '13.+')
-
-        // Allows data and resource packs to be loaded from an instance wide
-        // config folder.
-        deobfRuntime('openloader', 'net.darkhax.openloader', 'OpenLoader-Forge-'+project.ext.mcVersion, '15.+')
-
-        // Runelic adds a new font to the game called Runelic. There are also
-        // commands under /runelic which help apply the mod.
-        deobfRuntime('runelic', 'net.darkhax.runelic', 'Runelic-Forge-'+project.ext.mcVersion, '14.+')
-
-        // Tips adds data driven tips to loading screens in the game. New tips
-        // can be added by adding entries to your mod's resource pack.
-        deobfRuntime('tips', 'net.darkhax.tips', 'Tips-Forge-'+project.ext.mcVersion, '8.+')
-
-        // Adds additional tool stats to the item tooltip like harvest level.
-        deobfRuntime('toolstats', 'net.darkhax.toolstats', 'ToolStats-Forge-'+project.ext.mcVersion, '12.+')
-
-        // Patchouli is a framework for creating in-game documentation through
-        // books and other types of documents.
-        deobfRuntime('patchouli', 'vazkii.patchouli', 'Patchouli', project.ext.mcVersion+'-77')
-
-        // JEI is an information interface for game data such as recipes. Mods
-        // are encouraged to add data about their own content to this mod.
-        // The most common information to include is item descriptions and
-        // crafting info for new recipe categories.
-        deobfRuntime('jei', 'mezz.jei', 'jei-'+project.ext.mcVersion+'-forge', '11.+')
-        
-        // Controlling overhauls the keybind menu by adding a search bar and
-        // other QoL features.
-        deobfRuntime('controlling', 'com.blamejared.controlling', 'Controlling-forge-'+project.ext.mcVersion, '10.+')
-
-        // Curios adds new inventory slots for items like rings and charms.
-        // Mods are encouraged to use Curios where possible to reduce inventory
-        // clutter and provide a unified experience for players.
-        deobfRuntime('curios', 'top.theillusivec4.curios', 'curios-forge', project.ext.mcVersion+'-5.+')
-
-        // Adds a block that can store mass quantities of certain items.
-//        deobfRuntime('storage-drawers', 'curse.maven', 'storage-drawers-223852', '3180569')
-        
-        // Replaces the config GUI with a shiny new one. Mods can enable a 
-        // custom menu icon by defining additional properties in the mods.toml
-        // file of their mod.
-//        deobfRuntime('catalogue', 'curse.maven', 'catalogue-459701', '3285353')
-        
-//        deobfRuntime('mod-name-tooltip', 'curse.maven', 'mod-name-tooltip-238747', '3038982')
     }
 }
 

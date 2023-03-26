@@ -5,10 +5,20 @@ pipeline {
     agent any
 
     tools {
-        jdk "jdk8u292-b10"
+        jdk "jdk-17.0.1"
     }
     
     stages {
+        
+        stage('Setup') {
+        
+            steps {
+            
+                echo 'Setup Project'
+                sh 'chmod +x gradlew'
+                sh './gradlew clean'
+            }
+        }
         
         stage('Build') {
         
@@ -21,8 +31,7 @@ pipeline {
                 ]) {
             
                     echo 'Building project.'
-                    sh 'chmod +x gradlew'
-                    sh './gradlew clean build publish curseforge updateVersionTracker postTweet --stacktrace --warn'
+                    sh './gradlew build publish publishCurseForge updateVersionTracker postDiscord --stacktrace --warn'
                 }
             }
         }
