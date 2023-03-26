@@ -21,13 +21,14 @@ buildscript {
     
     dependencies {
     
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 
 apply plugin: net.minecraftforge.gradle.userdev.UserDevPlugin
 apply from: 'gradle/property_helper.gradle'
+apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle'
 
 // Configurable Forge Properties
 def forgeVersion = getRequiredString('forge_version')
@@ -43,7 +44,7 @@ def remapRefmap = getDefaultBoolean('mixin_remap_refmap')
 def remapRefmapFile = getDefaultString('mixin_remap_refmap_file', "${projectDir}/build/createSrgToMcp/output.srg")
 
 archivesBaseName = "${mod_name}-${minecraft_version}"
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
 
@@ -159,30 +160,31 @@ dependencies {
 
 processResources {
 
-    from(sourceSets.main.resources.srcDirs) {
-    
-        include 'META-INF/mods.toml'
-        include 'pack.mcmeta'
-        
-        def buildProps = project.properties.clone()
-        
-        if (project.ext.has('patreon') && project.ext.patreon.pledges && !project.ext.patreon.pledges.isEmpty()) {
-        
-            def supporters = new ArrayList<String>()
+    def buildProps = project.properties.clone()
 
-            for (entry in project.ext.patreon.pledges) {
+    if (project.ext.has('patreon') && project.ext.patreon.pledges && !project.ext.patreon.pledges.isEmpty()) {
 
-                def pledge = entry.getValue();
+        def supporters = new ArrayList<String>()
 
-                if (pledge.isValid()) {
+        for (entry in project.ext.patreon.pledges) {
 
-                    supporters.add(pledge.getDisplayName())
-                }
+            def pledge = entry.getValue();
+
+            if (pledge.isValid()) {
+
+                supporters.add(pledge.getDisplayName())
             }
-            
-            buildProps.put('modCredits', "${project.ext.modCredits} and the supporters on Patreon: ${supporters.join(', ')}") 
         }
-        
+
+        buildProps.put('modCredits', "${project.ext.modCredits} and the supporters on Patreon: ${supporters.join(', ')}")
+    }
+
+    // Replace FML's magic file.jarVersion string with the correct version at
+    // build time.
+    buildProps.put('file', [jarVersion: project.version])
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+
         expand buildProps
     }
 }
@@ -240,7 +242,7 @@ task runServer() {
 // Forge's Jar Signer
 def canSignJar = project.hasProperty('keyStore') && project.hasProperty('keyStorePass') && project.hasProperty('keyStoreKeyPass') && project.hasProperty('keyStoreAlias')
 
-task signJar(type: net.minecraftforge.gradle.common.task.SignJar, dependsOn: jar) {
+/*task signJar(type: net.minecraftforge.gradle.common.task.SignJar, dependsOn: jar) {
     
     onlyIf {
     
@@ -263,7 +265,7 @@ task signJar(type: net.minecraftforge.gradle.common.task.SignJar, dependsOn: jar
     
         project.logger.warn('Jar signing is disabled for this build. One or more keyStore properties are not specified.')
     }
-}
+}*/
 
 task setupDebugRunConfigs() {
 

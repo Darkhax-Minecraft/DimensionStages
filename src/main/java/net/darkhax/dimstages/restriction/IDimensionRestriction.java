@@ -2,9 +2,9 @@ package net.darkhax.dimstages.restriction;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
 
 public interface IDimensionRestriction {
     
@@ -15,7 +15,7 @@ public interface IDimensionRestriction {
      * @param dimension The ID of the dimension.
      * @return Whether or not the player is restricted from entering the dimension.
      */
-    public boolean shouldRestrict (PlayerEntity player, ResourceLocation dimension);
+    public boolean shouldRestrict (Player player, ResourceLocation dimension);
     
     /**
      * Gets a message that is displayed to the player when they are restricted from entering
@@ -27,5 +27,5 @@ public interface IDimensionRestriction {
      *         no message will be displayed.
      */
     @Nullable
-    public ITextComponent getRestrictedMessage (PlayerEntity player, ResourceLocation dimension);
+    public Component getRestrictedMessage (Player player, ResourceLocation dimension);
 }

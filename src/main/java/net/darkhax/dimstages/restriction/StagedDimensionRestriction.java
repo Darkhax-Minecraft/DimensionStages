@@ -6,8 +6,8 @@ import java.util.Set;
 
 import net.darkhax.dimstages.DimensionStages;
 import net.darkhax.gamestages.GameStageHelper;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.resources.ResourceLocation;
 
 public class StagedDimensionRestriction extends DimensionRestriction {
     
@@ -55,7 +55,7 @@ public class StagedDimensionRestriction extends DimensionRestriction {
     }
     
     @Override
-    public boolean shouldRestrict (PlayerEntity player, ResourceLocation dimension) {
+    public boolean shouldRestrict (Player player, ResourceLocation dimension) {
         
         return !GameStageHelper.hasAllOf(player, this.requiredStages);
     }

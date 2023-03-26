@@ -9,6 +9,9 @@ build/
 *.prefs
 *.launch
 
+# IDEA
+.idea/
+
 # General
 run/
 

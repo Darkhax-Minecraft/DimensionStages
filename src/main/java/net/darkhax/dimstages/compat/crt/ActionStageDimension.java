@@ -6,31 +6,30 @@ import java.util.Set;
 
 import javax.annotation.Nullable;
 
-import com.blamejared.crafttweaker.api.actions.IRuntimeAction;
-import com.blamejared.crafttweaker.api.logger.ILogger;
-import com.blamejared.crafttweaker.impl.util.text.MCTextComponent;
+import com.blamejared.crafttweaker.api.action.base.IRuntimeAction;
 
 import net.darkhax.dimstages.DimensionStages;
 import net.darkhax.dimstages.restriction.StagedDimensionRestriction;
 import net.darkhax.gamestages.GameStageHelper;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import org.apache.logging.log4j.Logger;
 
 public class ActionStageDimension implements IRuntimeAction {
     
     private final String dimensionId;
     private final String[] stages;
-    private final ITextComponent restrictionMessage;
+    private final Component restrictionMessage;
     
-    public ActionStageDimension(String dimensionId, @Nullable MCTextComponent message, String... stages) {
+    public ActionStageDimension(String dimensionId, @Nullable Component message, String... stages) {
         
         this.dimensionId = dimensionId;
         this.stages = stages;
-        this.restrictionMessage = message != null ? message.getInternal() : null;
+        this.restrictionMessage = message;
     }
     
     @Override
-    public boolean validate (ILogger logger) {
+    public boolean validate (Logger logger) {
         
         if (ResourceLocation.tryParse(this.dimensionId) == null) {
             
@@ -50,7 +49,7 @@ public class ActionStageDimension implements IRuntimeAction {
             
             if (!GameStageHelper.getKnownStages().isEmpty() && !GameStageHelper.isStageKnown(stage)) {
                 
-                logger.warning("[Dimension Stages] Unknown stage '" + stage + "' for dimension '" + this.dimensionId + "' " + this.getDeclaredScriptPosition());
+                logger.warn("[Dimension Stages] Unknown stage '" + stage + "' for dimension '" + this.dimensionId + "' " + this.getDeclaredScriptPosition());
             }
             
             validStages.add(stage);
