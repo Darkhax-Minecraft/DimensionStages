@@ -17,7 +17,7 @@ import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 public class RestrictionManager extends SimplePreparableReloadListener<Void> {
     
     private final Multimap<ResourceLocation, IDimensionRestriction> restrictions = ArrayListMultimap.create();
-    
+
     public RestrictionManager() {
         
         MinecraftForge.EVENT_BUS.addListener(this::onEntityTravelToDimension);
@@ -36,7 +36,12 @@ public class RestrictionManager extends SimplePreparableReloadListener<Void> {
             
             final ServerPlayer player = (ServerPlayer) event.getEntity();
             final ResourceLocation dimensionId = event.getDimension().location();
-            
+
+            if (DimensionStages.CONFIG.ignoreCreativeMode && player.isCreative()) {
+
+                return;
+            }
+
             for (final IDimensionRestriction restriction : this.restrictions.get(dimensionId)) {
                 
                 if (restriction != null && restriction.shouldRestrict(player, event.getDimension().location())) {

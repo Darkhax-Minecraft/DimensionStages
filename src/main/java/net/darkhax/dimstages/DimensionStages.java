@@ -1,5 +1,6 @@
 package net.darkhax.dimstages;
 
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,4 +11,5 @@ public class DimensionStages {
     
     public static final Logger LOG = LogManager.getLogger("Dimension Stages");
     public static final RestrictionManager MANAGER = new RestrictionManager();
+    public static final ConfigOptions CONFIG = ConfigOptions.load(FMLPaths.CONFIGDIR.get().resolve("dimstages.json").toFile());
 }
